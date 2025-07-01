@@ -1,5 +1,5 @@
 import React from 'react'
-import {usePlayerStore, useClubStore} from "../../Stores/playerStore.js";
+import {usePlayerStore, useClubStore} from "@/Stores/playerStore.js";
 import {motion} from "motion/react";
 import {MdDelete} from "react-icons/md";
 

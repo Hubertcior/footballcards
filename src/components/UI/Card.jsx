@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-import { usePlayerStore, useClubStore } from '../../Stores/playerStore.js';
-import questionMark from '../../assets/questionMark.jpg';
+import { usePlayerStore, useClubStore } from '@/Stores/playerStore.js';
 
 const Card = ({ url, text, img, star, isNotLeague, isPlayer }) => {
     const MotionLink = motion(Link);
@@ -40,7 +39,7 @@ const Card = ({ url, text, img, star, isNotLeague, isPlayer }) => {
             {!isNotLeague ? (
                 <></>
             ): img === null || img === undefined || img === '' ?(
-                <img src={questionMark} alt="questionMark" className="size-25 mb-2" />
+                <p className="font-bold text-[rem]">?</p>
             ):(
                 <img src={img} alt={text} className="size-25 mb-2" />
             )}
