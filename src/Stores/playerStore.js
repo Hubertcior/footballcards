@@ -21,8 +21,7 @@ export const usePlayerStore = create(devtools(persist((set, get) => ({
     isFavorite: (playerName) => {
         return get().playerList.includes(playerName);
     }
-}))));
-
+}), { name: 'player-storage' })));
 
 export const useClubStore = create(devtools(persist((set, get) => ({
     clubList: [],
@@ -44,4 +43,4 @@ export const useClubStore = create(devtools(persist((set, get) => ({
     isFavoriteClub: (clubName) => {
         return get().clubList.includes(clubName);
     }
-}))));
+}), { name: 'club-storage' })));

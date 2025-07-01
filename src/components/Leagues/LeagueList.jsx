@@ -2,6 +2,7 @@ import {useFetch} from "../../hooks/useFetch.js";
 import Spinner from "../UI/Spinner.jsx";
 import Heading from "../UI/Heading.jsx";
 import Card from "../UI/Card.jsx";
+import slugify from "slugify";
 
 
 const LeaguesList = () => {
@@ -15,7 +16,8 @@ const LeaguesList = () => {
             <Heading text="league"></Heading>
         <ul className="flex flex-wrap justify-center items-center gap-4 p-4">
             {data?.leagues?.map((league) => (
-                <Card key={league.idLeague} url={`/leagues/${league.strLeague}`} text={league.strLeague} isNotLeague={false} isPlayer={false}/>
+                <Card key={league.idLeague} url={`/leagues/${slugify(league.strLeague, { lower: true,
+                    replacement: "_",})}`} text={league.strLeague} isNotLeague={false} isPlayer={false}/>
             ))}
         </ul>
         </>
