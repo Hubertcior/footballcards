@@ -12,12 +12,12 @@ const FavouriteBar = () => {
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
-        if (modalOpen && favPlayers.length === 0) {
+        if (modalOpen && (favPlayers.length === 0 && favClubs.length === 0)) {
             setModalOpen(false);
         }
     }, [favPlayers, favClubs, modalOpen]);
 
-    if(favPlayers.length === 0) return null;
+    if(favPlayers.length === 0 && favClubs.length === 0) return null;
 
 
 
