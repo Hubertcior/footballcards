@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
-import { usePlayerStore } from '../../Stores/playerStore.js';
+import { usePlayerStore, useClubStore } from '../../Stores/playerStore.js';
 import questionMark from '../../assets/questionMark.jpg';
 
-const Card = ({ url, text, img, star, isNotLeague }) => {
+const Card = ({ url, text, img, star, isNotLeague, isPlayer }) => {
     const MotionLink = motion(Link);
     const MotionFaStar = motion(FaStar);
 
@@ -13,14 +13,19 @@ const Card = ({ url, text, img, star, isNotLeague }) => {
     const removePlayer = usePlayerStore(state => state.removePlayer);
     const playerList = usePlayerStore(state => state.playerList);
 
-    const isFav = playerList.some(p => p.name === text);
+    const addClub = useClubStore(state => state.addClub);
+    const removeClub = useClubStore(state => state.removeClub);
+    const clubList = useClubStore(state => state.clubList);
+
+    const isFavPlayer = playerList.some(p => p.name === text);
+    const isFavClub = clubList.some(c => c.name === text);
 
     const handleStarClick = (e) => {
         e.preventDefault();
-        if (isFav) {
-            removePlayer(text);
+        if (isFavPlayer || isFavClub) {
+            {isPlayer ? removePlayer(text) : removeClub(text)}
         } else {
-            addPlayer({ name: text, img: img || questionMark });
+            {isPlayer ? addPlayer({ name: text, img }) : addClub({ name: text, img })}
         }
     };
 
@@ -41,14 +46,13 @@ const Card = ({ url, text, img, star, isNotLeague }) => {
             )}
             <p>{text}</p>
 
-            {/* Gwiazdka */}
             {star && (
                 <MotionFaStar
                     onClick={handleStarClick}
                     className="absolute bottom-2 right-2 cursor-pointer"
                     size={30}
-                    color={isFav ? 'yellow' : 'white'}
-                    title={isFav ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
+                    color={isFavPlayer || isFavClub ? 'yellow' : 'white'}
+                    title={isFavPlayer || isFavClub ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
                     whileHover={{ scale: 1.2, rotate: 15 }}
                     whileTap={{ scale: 0.9, rotate: -15 }}
                 />
