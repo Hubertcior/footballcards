@@ -16,10 +16,10 @@ const TeamsList = () => {
 
     return (
         <div>
-            <Heading text="team"></Heading>
+            <Heading text="Pick team"></Heading>
             <ul className="flex flex-wrap justify-center items-center gap-4 p-4">
                 {data?.teams?.map((team) => (
-                    <Card key={team.idTeam} url={`/leagues/${leagueName}/${team.idTeam}`} text={team.strTeam} img={team.strBadge} star={true} isNotLeague={true} isPlayer={false} />
+                    <Card id={team.idTeam} key={team.idTeam} url={`/leagues/${leagueName}/${team.idTeam}`} text={team.strTeam} img={team.strBadge} star={true} isNotLeague={true} isPlayer={false} />
                 ))}
             </ul>
         </div>

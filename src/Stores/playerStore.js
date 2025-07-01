@@ -6,17 +6,15 @@ export const usePlayerStore = create(devtools(persist((set, get) => ({
 
     addPlayer: (player) => {
         const { playerList } = get();
-        const exist = playerList.some(p => p.name === player.name);
+        const exist = playerList.some(p => p.id === player.id);
         if(!exist) {
             set({ playerList: [...playerList, player] });
         }
     },
 
-    removePlayer: (playerName) => {
-        set((state) => ({
-            playerList: state.playerList.filter(p => p.name !== playerName)
-        }));
-    },
+    removePlayer: (id) => set((state) => ({
+        playerList: state.playerList.filter(player => player.id !== id)
+    })),
 
     isFavorite: (playerName) => {
         return get().playerList.includes(playerName);
@@ -28,17 +26,15 @@ export const useClubStore = create(devtools(persist((set, get) => ({
 
     addClub: (club) => {
         const { clubList } = get();
-        const exist = clubList.some(c => c.name === club.name);
+        const exist = clubList.some(c => c.id === club.id);
         if(!exist) {
             set({ clubList: [...clubList, club] });
         }
     },
 
-    removeClub: (clubName) => {
-        set((state) => ({
-            clubList: state.clubList.filter(c => c.name !== clubName)
-        }));
-    },
+    removeClub: (id) => set((state) => ({
+        clubList: state.clubList.filter(club => club.id !== id)
+    })),
 
     isFavoriteClub: (clubName) => {
         return get().clubList.includes(clubName);
