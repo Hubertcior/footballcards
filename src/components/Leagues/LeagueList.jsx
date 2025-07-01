@@ -1,4 +1,4 @@
-import {useFetch} from "../../hooks/useFetch.js";
+import {useFetch} from "@/hooks/useFetch.js";
 import Spinner from "../UI/Spinner.jsx";
 import Heading from "../UI/Heading.jsx";
 import Card from "../UI/Card.jsx";

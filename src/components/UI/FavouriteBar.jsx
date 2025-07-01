@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {usePlayerStore, useClubStore} from "../../Stores/playerStore.js";
+import {usePlayerStore, useClubStore} from "@/Stores/playerStore.js";
 import {motion, AnimatePresence} from "motion/react";
 import FavouriteSection from "./FavouriteSection.jsx";
 

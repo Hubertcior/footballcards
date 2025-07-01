@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useFetch} from "../../hooks/useFetch.js";
+import {useFetch} from "@/hooks/useFetch.js";
 import Spinner from "../UI/Spinner.jsx";
 import Card from "../UI/Card.jsx";
 import Heading from "../UI/Heading.jsx";
