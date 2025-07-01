@@ -28,7 +28,7 @@ const FavouriteSection = ({itemsArray, name}) => {
                     <MotionDelete
                         className="text-red-500 cursor-pointer"
                         size={24}
-                        onClick={name === 'player' ? () => usePlayerStore.getState().removePlayer(club.name) : () => useClubStore.getState().removeClub(club.name)}
+                        onClick={name === 'player' ? () => usePlayerStore.getState().removePlayer(club.id) : () => useClubStore.getState().removeClub(club.id)}
                         whileHover={{ scale: 1.2, rotate: 15 }}
                         whileTap={{ scale: 0.9, rotate: -15 }}
                         title="Remove from favourites"/>

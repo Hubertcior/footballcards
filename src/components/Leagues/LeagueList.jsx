@@ -13,7 +13,7 @@ const LeaguesList = () => {
 
     return (
         <>
-            <Heading text="league"></Heading>
+            <Heading text="Pick League"></Heading>
         <ul className="flex flex-wrap justify-center items-center gap-4 p-4">
             {data?.leagues?.map((league) => (
                 <Card key={league.idLeague} url={`/leagues/${slugify(league.strLeague, { lower: true,

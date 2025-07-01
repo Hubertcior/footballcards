@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import { usePlayerStore, useClubStore } from '@/Stores/playerStore.js';
 
-const Card = ({ url, text, img, star, isNotLeague, isPlayer }) => {
+const Card = ({ url, text, img, star, id ,isNotLeague, isPlayer }) => {
     const MotionLink = motion(Link);
     const MotionFaStar = motion(FaStar);
 
@@ -24,7 +24,7 @@ const Card = ({ url, text, img, star, isNotLeague, isPlayer }) => {
         if (isFavPlayer || isFavClub) {
             {isPlayer ? removePlayer(text) : removeClub(text)}
         } else {
-            {isPlayer ? addPlayer({ name: text, img }) : addClub({ name: text, img })}
+            {isPlayer ? addPlayer({ name: text, img, id, }) : addClub({ name: text, img, id, })}
         }
     };
 

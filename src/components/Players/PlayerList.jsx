@@ -15,10 +15,10 @@ const PlayerList = () => {
 
     return (
         <div>
-            <Heading text="player"/>
+            <Heading text="Pick Player"/>
             <ul className="flex flex-wrap justify-center items-center gap-4 p-4">
                 {data?.player?.map((player) => (
-                    <Card key={player.idPlayer} text={player.strPlayer} img={player.strThumb} star={true} isNotLeague={true} isPlayer={true} />
+                    <Card id={player.idPlayer} key={player.idPlayer} text={player.strPlayer} img={player.strThumb} star={true} isNotLeague={true} isPlayer={true} />
                 ))}
             </ul>
         </div>
