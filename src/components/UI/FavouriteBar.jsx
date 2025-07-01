@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import {usePlayerStore} from "../../Stores/playerStore.js";
+import {usePlayerStore, useClubStore} from "../../Stores/playerStore.js";
 import {motion, AnimatePresence} from "motion/react";
-import { MdDelete } from "react-icons/md";
-
+import FavouriteSection from "./FavouriteSection.jsx";
 
 const FavouriteBar = () => {
 
     const MotionDiv = motion.div;
-    const MotionDelete = motion(MdDelete);
     const favPlayers = usePlayerStore(state => state.playerList);
+    const favClubs = useClubStore(state => state.clubList);
 
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -16,9 +15,11 @@ const FavouriteBar = () => {
         if (modalOpen && favPlayers.length === 0) {
             setModalOpen(false);
         }
-    }, [favPlayers, modalOpen]);
+    }, [favPlayers, favClubs, modalOpen]);
 
     if(favPlayers.length === 0) return null;
+
+
 
     return (
         <>
@@ -40,40 +41,24 @@ const FavouriteBar = () => {
                     onClick={() => setModalOpen(false)}
                 />
                 <motion.div
-                    className="fixed bottom-0 left-0 right-0 bg-green-400 rounded-t-2xl p-6 max-h-[70vh] overflow-auto z-50"
+                    className="fixed bottom-0 left-0 right-0 bg-green-400 rounded-t-2xl p-6 max-h-[70vh] overflow-auto z-50 "
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     exit={{ y: "100%" }}
                     transition={{ type: 'spring', stiffness: 100, damping: 20 }}
                 >
-                    <h2 className="text-2xl font-bold mb-4">Your favourite</h2>
-                    <ul className="space-y-2">
-                        {favPlayers.map((player, i) => (
-                            <li key={i} className="flex items-center gap-4">
-                                <img
-                                    src={player.img}
-                                    alt={player.name}
-                                    className="w-12 h-12  object-cover"
-                                />
-                                <span>{player.name}</span>
-                                <MotionDelete
-                                    className="text-red-500 cursor-pointer"
-                                    size={24}
-                                    onClick={() => usePlayerStore.getState().removePlayer(player.name)}
-                                    whileHover={{ scale: 1.2, rotate: 15 }}
-                                    whileTap={{ scale: 0.9, rotate: -15 }}
-                                    title="Remove from favourites"/>
-
-                            </li>
-                        ))}
-                    </ul>
-
-                    <button
-                        onClick={() => setModalOpen(false)}
-                        className="mt-6 px-4 py-2 bg-black text-white rounded hover:bg-gray-800"
-                    >
-                        Close
-                    </button>
+                    <div className="flex items-center justify-around flex-row">
+                        <FavouriteSection itemsArray={favPlayers} name="player"></FavouriteSection>
+                        <FavouriteSection itemsArray={favClubs} name="club"></FavouriteSection>
+                    </div>
+                    <div className="flex justify-center mt-6">
+                        <button
+                            onClick={() => setModalOpen(false)}
+                            className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 "
+                        >
+                            Close
+                        </button>
+                    </div>
                 </motion.div>
             </>
         )}

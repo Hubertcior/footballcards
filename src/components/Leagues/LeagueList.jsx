@@ -15,7 +15,7 @@ const LeaguesList = () => {
             <Heading text="league"></Heading>
         <ul className="flex flex-wrap justify-center items-center gap-4 p-4">
             {data?.leagues?.map((league) => (
-                <Card key={league.idLeague} url={`/leagues/${league.strLeague}`} text={league.strLeague} isNotLeague={false}/>
+                <Card key={league.idLeague} url={`/leagues/${league.strLeague}`} text={league.strLeague} isNotLeague={false} isPlayer={false}/>
             ))}
         </ul>
         </>
