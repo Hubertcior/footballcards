@@ -1,32 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { FaStar } from 'react-icons/fa';
-import { usePlayerStore, useClubStore } from '@/Stores/playerStore.js';
+import FavouriteStar from "@/components/UI/FavouriteStar.jsx";
 
-const Card = ({ url, text, img, star, id ,isNotLeague, isPlayer }) => {
+const Card = ({ url, text, img, star, id ,isNotLeague, isPlayer, playerNumber }) => {
     const MotionLink = motion(Link);
-    const MotionFaStar = motion(FaStar);
-
-    const addPlayer = usePlayerStore(state => state.addPlayer);
-    const removePlayer = usePlayerStore(state => state.removePlayer);
-    const playerList = usePlayerStore(state => state.playerList);
-
-    const addClub = useClubStore(state => state.addClub);
-    const removeClub = useClubStore(state => state.removeClub);
-    const clubList = useClubStore(state => state.clubList);
-
-    const isFavPlayer = playerList.some(p => p.name === text);
-    const isFavClub = clubList.some(c => c.name === text);
-
-    const handleStarClick = (e) => {
-        e.preventDefault();
-        if (isFavPlayer || isFavClub) {
-            {isPlayer ? removePlayer(text) : removeClub(text)}
-        } else {
-            {isPlayer ? addPlayer({ name: text, img, id, }) : addClub({ name: text, img, id, })}
-        }
-    };
 
     return (
         <MotionLink
@@ -36,25 +14,29 @@ const Card = ({ url, text, img, star, id ,isNotLeague, isPlayer }) => {
             className={`${isNotLeague ? "h-50" : "h-30"} w-60 flex items-center justify-center text-center text-2xl
                  bg-black/70 rounded-lg shadow-[0_0_20px_rgba(0,0,0,0.5)] text-white cursor-pointer flex-col relative`}
         >
+            {playerNumber && <h2
+                className="absolute -left-16 top-1/2 -translate-y-1/2 text-5xl font-black text-yellow-900 bg-yellow-300 border-2 border-yellow-500 shadow-xl rounded-full px-6 py-2 z-20 select-none"
+                style={{
+                    textShadow: '0 2px 8px #eab308, 0 1px 1px #fff',
+                    filter: 'none',
+                    letterSpacing: '0.08em',
+                }}
+            >
+                {playerNumber}
+            </h2>}
             {!isNotLeague ? (
                 <></>
             ): img === null || img === undefined || img === '' ?(
-                <p className="font-bold text-[rem]">?</p>
+                <p className="font-bold text-[5rem]">?</p>
+            ): isPlayer ?(
+                <img src={img} alt={text} className="size-25 mb-2 rounded-full" />
             ):(
                 <img src={img} alt={text} className="size-25 mb-2" />
             )}
             <p>{text}</p>
 
             {star && (
-                <MotionFaStar
-                    onClick={handleStarClick}
-                    className="absolute bottom-2 right-2 cursor-pointer"
-                    size={30}
-                    color={isFavPlayer || isFavClub ? 'yellow' : 'white'}
-                    title={isFavPlayer || isFavClub ? 'Usuń z ulubionych' : 'Dodaj do ulubionych'}
-                    whileHover={{ scale: 1.2, rotate: 15 }}
-                    whileTap={{ scale: 0.9, rotate: -15 }}
-                />
+                <FavouriteStar img={img} text={text} id={id} isPlayer={isPlayer}  />
             )}
         </MotionLink>
     );

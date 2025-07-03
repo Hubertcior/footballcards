@@ -22,9 +22,10 @@ const Layout = () => {
                 <Outlet />
             </main>
 
-            <footer>
+
+            <div className="fixed bottom-8 right-8 z-50">
                 <FavouriteBar />
-            </footer>
+            </div>
         </div>
     );
 };
