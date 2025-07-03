@@ -17,18 +17,20 @@ const FavouriteSection = ({itemsArray, name}) => {
         )}
         </h2>
             <ul className="space-y-2">
-            {itemsArray.map((club, i) => (
+            {itemsArray.map((item, i) => (
                 <li key={i} className="flex items-center gap-4">
-                    <img
-                        src={club.img}
-                        alt={club.name}
-                        className="w-12 h-12  object-cover"
-                    />
-                    <span>{club.name}</span>
+                    {
+                        item.img ?  <img
+                            src={item.img}
+                            alt={item.name}
+                            className="w-12 h-12  object-cover"
+                        /> : <p className="font-bold">?</p>
+                    }
+                    <span>{item.name}</span>
                     <MotionDelete
                         className="text-red-500 cursor-pointer"
                         size={24}
-                        onClick={name === 'player' ? () => usePlayerStore.getState().removePlayer(club.id) : () => useClubStore.getState().removeClub(club.id)}
+                        onClick={name === 'player' ? () => usePlayerStore.getState().removePlayer(item.id) : () => useClubStore.getState().removeClub(item.id)}
                         whileHover={{ scale: 1.2, rotate: 15 }}
                         whileTap={{ scale: 0.9, rotate: -15 }}
                         title="Remove from favourites"/>
