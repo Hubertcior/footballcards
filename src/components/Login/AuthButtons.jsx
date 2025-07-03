@@ -27,13 +27,13 @@ const AuthButtons = () => {
             ) : (
                 <>
                     <a
-                        href="/login"
+                        href=""
                         className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
                     >
                         Log in
                     </a>
                     <a
-                        href="/signup"
+                        href=""
                         className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 transition"
                     >
                         Sign up
