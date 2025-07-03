@@ -2,7 +2,6 @@ import {useParams} from "react-router-dom";
 import {useFetch} from "@/hooks/useFetch.js";
 import Spinner from "../UI/Spinner.jsx";
 import PlayerInfoCard from "@/components/UI/PlayerInfoCard.jsx";
-import RandomPlayerCard from "@/components/RandomPlayerCard/RandomPlayerCard.jsx";
 
 const PlayerInfo = () => {
 
