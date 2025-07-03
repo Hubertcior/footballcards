@@ -6,7 +6,7 @@ import PanelButton from "@/components/UI/PanelButton.jsx";
 
 const FavouriteBar = () => {
 
-    const motionDiv = motion.div;
+    const MotionDiv = motion.div;
     const favPlayers = usePlayerStore(state => state.playerList);
     const favClubs = useClubStore(state => state.clubList);
 
@@ -29,14 +29,14 @@ const FavouriteBar = () => {
     <AnimatePresence>
         {modalOpen && (
             <>
-                <motionDiv
+                <MotionDiv
                     className="fixed inset-0 bg-black bg-opacity-50 z-40"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={() => setModalOpen(false)}
                 />
-                <motionDiv
+                <MotionDiv
                     className="fixed bottom-0 left-0 right-0 bg-green-400 rounded-t-2xl p-6 max-h-[70vh] overflow-auto z-50 "
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
@@ -55,7 +55,7 @@ const FavouriteBar = () => {
                         <FavouriteSection itemsArray={favPlayers} name="player"></FavouriteSection>
                         <FavouriteSection itemsArray={favClubs} name="club"></FavouriteSection>
                     </div>
-                </motionDiv>
+                </MotionDiv>
             </>
         )}
     </AnimatePresence>
