@@ -24,7 +24,7 @@ const FavouriteBar = () => {
 
     return (
         <>
-            <PanelButton text="⭐ Open Pack's ⭐" />
+            <PanelButton text="⭐ Open Pack's ⭐" url={'/pack-opening'} />
             <PanelButton text="⭐ Favourite Panel ⭐" functionHandler={() => setModalOpen(true)} />
     <AnimatePresence>
         {modalOpen && (

@@ -4,6 +4,8 @@ import TeamsList from "@/components/Teams/TeamList.jsx";
 import PlayerList from "@/components/Players/PlayerList.jsx";
 import Layout from "@/components/UI/Layout.jsx";
 import PlayerInfo from "@/components/PlayerInfo/PlayerInfo.jsx";
+import PackAnimation from "@/components/PackOpening/PackAnimation.jsx";
+
 
 function App() {
     return (
@@ -15,6 +17,7 @@ function App() {
                     <Route path="leagues/:leagueName" element={<TeamsList />} />
                     <Route path="leagues/:leagueName/:teamID" element={<PlayerList />} />
                     <Route path="leagues/:leagueName/:teamID/:playerID" element={<PlayerInfo />} />
+                    <Route path="pack-opening" element={<PackAnimation/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

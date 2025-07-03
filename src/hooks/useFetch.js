@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const useFetch = (url) => {
-    const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const dataRef = useRef(null);
 
     useEffect(() => {
         if (!url) return;
@@ -17,7 +17,7 @@ export const useFetch = (url) => {
                     throw new Error('Coś poszło nie tak z fetchowaniem!');
                 }
                 const json = await response.json();
-                setData(json);
+                dataRef.current = json;
             } catch (err) {
                 setError(err.message);
             } finally {
@@ -28,5 +28,5 @@ export const useFetch = (url) => {
         fetchData();
     }, [url]);
 
-    return { data, loading, error };
+    return { data: dataRef.current, loading, error };
 };
