@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {usePlayerStore, useClubStore} from "@/Stores/playerStore.js";
 import {motion, AnimatePresence} from "motion/react";
 import FavouriteSection from "./FavouriteSection.jsx";
@@ -11,16 +11,6 @@ const FavouriteBar = () => {
     const favClubs = useClubStore(state => state.clubList);
 
     const [modalOpen, setModalOpen] = useState(false);
-
-    useEffect(() => {
-        if (modalOpen && (favPlayers.length === 0 && favClubs.length === 0)) {
-            setModalOpen(false);
-        }
-    }, [favPlayers, favClubs, modalOpen]);
-
-    if(favPlayers.length === 0 && favClubs.length === 0) return null;
-
-
 
     return (
         <>
@@ -43,18 +33,27 @@ const FavouriteBar = () => {
                     exit={{ y: "100%" }}
                     transition={{ type: 'spring', stiffness: 100, damping: 20 }}
                 >
-                    <button
-                        onClick={() => setModalOpen(false)}
-                        className="absolute top-2 right-6 w-10 h-10 flex items-center justify-center bg-red-600 text-white rounded-full text-3xl font-bold shadow hover:bg-red-700 transition z-50 p-0"
-                        aria-label="Zamknij"
-                        style={{ lineHeight: 1, textAlign: 'center' }}
-                    >
-                        <span className="flex items-center justify-center w-full h-full">×</span>
-                    </button>
-                    <div className="flex items-center justify-around flex-row">
-                        <FavouriteSection itemsArray={favPlayers} name="player"></FavouriteSection>
-                        <FavouriteSection itemsArray={favClubs} name="club"></FavouriteSection>
-                    </div>
+                    {(favPlayers.length === 0 && favClubs.length === 0) ? (
+                        <div className="flex flex-col items-center justify-center h-full">
+                            <h2 className="text-2xl font-bold mb-4">You don't have any favorite clubs or players yet!</h2>
+                            <p className="text-lg">Please add some players or clubs to your favorites to see them here.</p>
+                        </div>
+                    ) : (
+                        <>
+                            <button
+                                onClick={() => setModalOpen(false)}
+                                className="absolute top-2 right-6 w-10 h-10 flex items-center justify-center bg-red-600 text-white rounded-full text-3xl font-bold shadow hover:bg-red-700 transition z-50 p-0"
+                                aria-label="Zamknij"
+                                style={{ lineHeight: 1, textAlign: 'center' }}
+                            >
+                                <span className="flex items-center justify-center w-full h-full">×</span>
+                            </button>
+                            <div className="flex items-center justify-around flex-row">
+                                <FavouriteSection itemsArray={favPlayers} name="player" />
+                                <FavouriteSection itemsArray={favClubs} name="club" />
+                            </div>
+                        </>
+                    )}
                 </MotionDiv>
             </>
         )}
