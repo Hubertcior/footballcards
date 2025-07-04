@@ -1,9 +1,25 @@
 import { Auth } from '@supabase/auth-ui-react'
 import { supabase} from "@/lib/supabase.js";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 import React from 'react'
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const {data : listener} = supabase.auth.onAuthStateChange((event,) => {
+            if(event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+                navigate('/leagues');
+            }
+        })
+        return () => {
+            listener.subscription.unsubscribe();
+        }
+    }, [navigate]);
+
     return (
         <div className="flex items-center justify-center">
             <div className="bg-white/80 rounded-xl shadow-lg p-8 w-full max-w-md">
