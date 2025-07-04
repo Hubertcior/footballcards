@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import FavouriteBar from "./FavouriteBar.jsx";
 import BackButton from "./BackButton.jsx";
 import AuthButtons from "@/components/Login/AuthButtons.jsx";
+import CoinsBar from "@/components/CoinsBar/CoinsBar.jsx";
 
 
 const Layout = () => {
@@ -15,6 +16,7 @@ const Layout = () => {
              style={{
                  background: 'radial-gradient(circle at center, green 0%, black 100%)'
              }}>
+            <CoinsBar />
             <header className=" text-white text-center flex space-around gap-10">
                <BackButton disable={blockBackButton}/>
                 <h1 className="text-4xl font-bold ">⚽ Football Explorer ⚽</h1>
