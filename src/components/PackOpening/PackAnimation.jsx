@@ -16,7 +16,7 @@ const PackAnimation = () => {
     };
 
     return (
-        <RequireAuth>
+        <RequireAuth info>
         <div className="flex items-center justify-center  h-[500px]">
             <div className="pack-container flex flex-col items-center justify-center">
                 {!opened ? (
