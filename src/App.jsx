@@ -5,6 +5,7 @@ import PlayerList from "@/components/Players/PlayerList.jsx";
 import Layout from "@/components/UI/Layout.jsx";
 import PlayerInfo from "@/components/PlayerInfo/PlayerInfo.jsx";
 import PackAnimation from "@/components/PackOpening/PackAnimation.jsx";
+import Login from "@/components/Login/Login.jsx";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <Route path="leagues/:leagueName/:teamID" element={<PlayerList />} />
                     <Route path="leagues/:leagueName/:teamID/:playerID" element={<PlayerInfo />} />
                     <Route path="pack-opening" element={<PackAnimation/>} />
+                    <Route path="login" element={<Login/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PackOpening from "@/components/PackOpening/PackOpening.jsx";
+import RequireAuth from "@/components/Login/RequireAuth.jsx";
 
 const PackAnimation = () => {
     const [opened, setOpened] = useState(false);
@@ -15,6 +16,7 @@ const PackAnimation = () => {
     };
 
     return (
+        <RequireAuth>
         <div className="flex items-center justify-center  h-[500px]">
             <div className="pack-container flex flex-col items-center justify-center">
                 {!opened ? (
@@ -40,6 +42,7 @@ const PackAnimation = () => {
                 )}
             </div>
         </div>
+        </RequireAuth>
     );
 };
 
