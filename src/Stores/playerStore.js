@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 
+
 export const usePlayerStore = create(devtools(persist((set, get) => ({
     playerList: [],
 
@@ -40,3 +41,4 @@ export const useClubStore = create(devtools(persist((set, get) => ({
         return get().clubList.includes(clubName);
     }
 }), { name: 'club-storage' })));
+

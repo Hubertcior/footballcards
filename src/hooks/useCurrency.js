@@ -12,16 +12,18 @@ export const useCurrency = () => {
 
             const { data: userData, error: userError } = await supabase.auth.getUser();
 
-            if (userError || !userData.user) {
+            if (userError || !userData?.user) {
                 setError(userError || new Error("Użytkownik niezalogowany"));
                 setLoading(false);
                 return;
             }
 
+            const userId = userData.user.id;
+
             const { data, error } = await supabase
                 .from('user_currency')
                 .select('amount')
-                .eq('user_id', userData.user.id)
+                .eq('user_id', userId)
                 .single();
 
             if (error) {
@@ -34,9 +36,10 @@ export const useCurrency = () => {
 
             setLoading(false);
         };
-
         fetchCurrency();
     }, []);
 
-    return { amount, loading, error };
+
+    return { amount, loading, error, setAmount };
 };
+
