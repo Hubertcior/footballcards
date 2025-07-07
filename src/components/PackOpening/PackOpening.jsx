@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useRandomPlayer } from "@/hooks/useRandomPlayer.js";
 import Spinner from "@/components/UI/Spinner.jsx";
 import PlayerCard from "@/components/TeamBuilder/PlayerCard.jsx";
+import ButtonGroup from "@/components/UI/ButtonGroup.jsx";
+import OpenAgainButton from "@/components/PackOpening/OpenAgainButton.jsx";
+import StoreToClubButton from "@/components/PackOpening/StoreToClubButton.jsx";
 
-const PackOpening = () => {
+const PackOpening = ({ onOpenAgain }) => {
     const { player, loading: loadingPlayer, error: errorPlayer } = useRandomPlayer();
     const [playerData, setPlayerData] = useState(null);
     const [loadingData, setLoadingData] = useState(false);
@@ -31,15 +34,21 @@ const PackOpening = () => {
     if (errorData) return <p>{errorData.message}</p>;
 
     return (
-        <PlayerCard
-            name={playerData?.player?.[0]?.strPlayer}
-            attackAttribute={player.attack}
-            defenceAttribute={player.defence}
-            midfieldAttribute={player.midfield}
-            image={playerData?.player?.[0]?.strThumb}
-            club={playerData?.player?.[0]?.strTeam}
-            country={playerData?.player?.[0]?.strNationality}
-        />
+        <div className="flex flex-col items-center justify-center gap-4 p-4">
+            <PlayerCard
+                name={playerData?.player?.[0]?.strPlayer}
+                attackAttribute={player.attack}
+                defenceAttribute={player.defence}
+                midfieldAttribute={player.midfield}
+                image={playerData?.player?.[0]?.strThumb}
+                club={playerData?.player?.[0]?.strTeam}
+                country={playerData?.player?.[0]?.strNationality}
+            />
+            <ButtonGroup>
+                <OpenAgainButton onClick={onOpenAgain}/>
+                <StoreToClubButton/>
+            </ButtonGroup>
+        </div>
     )
 }
 export default PackOpening

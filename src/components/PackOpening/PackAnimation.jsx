@@ -23,6 +23,12 @@ const PackAnimation = () => {
         setOpened(true);
     };
 
+    // Funkcja resetująca stany
+    const handleOpenAgain = () => {
+        setOpened(false);
+        setShowPackOpening(false);
+    };
+
     return (
         <RequireAuth info>
         {!loading ? (
@@ -50,7 +56,7 @@ const PackAnimation = () => {
                 )}
                 {showPackOpening && (
                     <div className="w-full flex items-center justify-center">
-                        <PackOpening />
+                        <PackOpening onOpenAgain={handleOpenAgain} />
                     </div>
                 )}
             </div>
