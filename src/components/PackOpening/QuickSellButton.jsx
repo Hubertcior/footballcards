@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const StoreToClubButton = () => {
+const QuickSellButton = ({ onClick }) => {
     return (
         <button
             className="
@@ -8,17 +8,19 @@ const StoreToClubButton = () => {
                 flex flex-col items-center justify-center
                 text-center
                 text-white rounded-full
-                bg-gradient-to-r from-blue-500 via-cyan-400 to-gren-300
+                bg-gradient-to-r from-green-400 via-lime-400 to-yellow-300
                 font-bold shadow-lg
                 hover:scale-105 hover:shadow-xl
                 transition-all duration-200
                 active:scale-95
                 focus:outline-none focus:ring-2 focus:ring-green-300
             "
+            onClick={onClick}
         >
-            Store to Club
+            Quick sell
+            <span>(250🪙)</span>
         </button>
-    )
-}
-export default StoreToClubButton
+    );
+};
 
+export default QuickSellButton;

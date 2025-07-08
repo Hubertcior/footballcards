@@ -3,7 +3,7 @@ import { useRandomPlayer } from "@/hooks/useRandomPlayer.js";
 import Spinner from "@/components/UI/Spinner.jsx";
 import PlayerCard from "@/components/TeamBuilder/PlayerCard.jsx";
 import ButtonGroup from "@/components/UI/ButtonGroup.jsx";
-import OpenAgainButton from "@/components/PackOpening/OpenAgainButton.jsx";
+import QuickSellButton from "@/components/PackOpening/QuickSellButton.jsx";
 import StoreToClubButton from "@/components/PackOpening/StoreToClubButton.jsx";
 
 const PackOpening = ({ onOpenAgain }) => {
@@ -50,7 +50,7 @@ const PackOpening = ({ onOpenAgain }) => {
                 country={playerData?.player?.[0]?.strNationality}
             />
             <ButtonGroup>
-                <OpenAgainButton onClick={onOpenAgain}/>
+                <QuickSellButton onClick={onOpenAgain}/>
                 <StoreToClubButton/>
             </ButtonGroup>
         </div>

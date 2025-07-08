@@ -17,7 +17,7 @@ const PlayerCard = ({
             <div className="absolute top-2 right-2 bg-white/80 rounded px-3 py-1 text-xs font-bold text-green-800 shadow">
                 {club}
             </div>
-            <div className="w-24 h-24 rounded-full bg-white/80 flex items-center justify-center shadow-lg mt-2 mb-4 overflow-hidden border-2 border-green-700">
+            <div className="w-24 h-24 rounded-full bg-white/80 flex items-center justify-center shadow-lg mt-6 mb-4 overflow-hidden border-2 border-green-700">
                 {image ? (
                     <img
                         src={image}
