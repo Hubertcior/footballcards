@@ -35,9 +35,6 @@ const PackOpening = ({ onOpenAgain }) => {
     if (errorPlayer) return <p>{errorPlayer.message}</p>;
     if (errorData) return <p>{errorData.message}</p>;
 
-
-    console.log(player);
-
     return (
         <div className="flex flex-col items-center justify-center gap-4 p-4">
             <PlayerCard

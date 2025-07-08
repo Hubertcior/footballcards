@@ -7,9 +7,27 @@ import PlayerInfo from "@/components/PlayerInfo/PlayerInfo.jsx";
 import PackAnimation from "@/components/PackOpening/PackAnimation.jsx";
 import Login from "@/components/Login/Login.jsx";
 import TopUsers from "@/components/TopUsers/TopUsers.jsx";
+import {useCurrencyStore} from "@/Stores/currencyStore.js";
+import {useEffect} from "react";
+import {supabase} from "@/lib/supabase.js";
 
 
 function App() {
+
+    const fetchCurrency = useCurrencyStore(state => state.fetchCurrency);
+
+    useEffect(() => {
+
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((event, ) => {
+            if (event === 'SIGNED_IN') {
+                fetchCurrency();
+            }
+        });
+        fetchCurrency();
+        return () => subscription.unsubscribe();
+    }, [fetchCurrency]);
+
+
     return (
         <BrowserRouter>
             <Routes>
