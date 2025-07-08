@@ -7,7 +7,7 @@ import Spinner from "@/components/UI/Spinner.jsx";
 
 
 const PackAnimation = () => {
-    const {subtractAmount} = useSetCurrency();
+    const {subtractAmount, addAmount} = useSetCurrency();
     const {amount, loading} = useCurrency();
 
     const [opened, setOpened] = useState(false);
@@ -25,6 +25,7 @@ const PackAnimation = () => {
 
 
     const handleOpenAgain = () => {
+        addAmount(250);
         setOpened(false);
         setShowPackOpening(false);
     };
