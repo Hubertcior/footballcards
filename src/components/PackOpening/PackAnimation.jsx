@@ -23,7 +23,7 @@ const PackAnimation = () => {
         setOpened(true);
     };
 
-    // Funkcja resetująca stany
+
     const handleOpenAgain = () => {
         setOpened(false);
         setShowPackOpening(false);

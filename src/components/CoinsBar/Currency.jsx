@@ -12,8 +12,6 @@ const Currency = () => {
     useEffect(() => {
         if (!userID) return;
 
-        console.log(userID);
-
         const subscription = supabase
             .channel('any_changes')
             .on(
