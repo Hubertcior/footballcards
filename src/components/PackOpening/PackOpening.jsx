@@ -12,6 +12,8 @@ const PackOpening = ({ onOpenAgain }) => {
     const [loadingData, setLoadingData] = useState(false);
     const [errorData, setErrorData] = useState(null);
 
+
+
     useEffect(() => {
         if (!player?.name) return;
         setPlayerData(null);
@@ -29,17 +31,20 @@ const PackOpening = ({ onOpenAgain }) => {
             });
     }, [player?.name]);
 
-    if (loadingPlayer || loadingData || !playerData) return <Spinner />;
+    if (loadingPlayer || loadingData ) return <Spinner />;
     if (errorPlayer) return <p>{errorPlayer.message}</p>;
     if (errorData) return <p>{errorData.message}</p>;
+
+
+    console.log(player);
 
     return (
         <div className="flex flex-col items-center justify-center gap-4 p-4">
             <PlayerCard
                 name={playerData?.player?.[0]?.strPlayer}
                 attackAttribute={player.attack}
-                defenceAttribute={player.defence}
                 midfieldAttribute={player.midfield}
+                defenceAttribute={player.defence}
                 image={playerData?.player?.[0]?.strThumb}
                 club={playerData?.player?.[0]?.strTeam}
                 country={playerData?.player?.[0]?.strNationality}
