@@ -12,9 +12,6 @@ export const useRandomPlayer = () => {
 
         const { data, error } = await supabase.rpc("get_random_player");
 
-        console.log("data:", data);
-        console.log("error:", error);
-
         if (error) {
             setError(error);
             setPlayer(null);
