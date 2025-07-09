@@ -100,7 +100,7 @@ const Game = () => {
                             onClick={startGame}
                             className="px-6 py-2 rounded-full bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold shadow-md hover:scale-105 transition-all"
                         >
-                            Zagraj jeszcze raz
+                            Play again
                         </button>
                     </div>
                 )}

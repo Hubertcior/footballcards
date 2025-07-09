@@ -8,7 +8,7 @@ const Currency = () => {
     if (error) return <div className="text-red-500">Error: {error.message}</div>;
 
     return (
-        <div className="text-xl font-semibold flex items-center gap-2">
+        <div className="text-base sm:text-xl font-semibold flex items-center gap-2">
             <span>Your coins:</span>
             <span>{amount} 🪙</span>
         </div>

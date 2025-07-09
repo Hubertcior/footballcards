@@ -11,6 +11,8 @@ const Layout = () => {
 
     const blockBackButton = location.pathname === '/leagues' || location.pathname === '/';
 
+    const isLoginPage = location.pathname === '/login';
+
     return (
         <div className="w-full min-h-screen flex flex-col justify-center items-center "
              style={{
@@ -23,9 +25,11 @@ const Layout = () => {
                 <AuthButtons/>
             </header>
 
-            <div className="flex flex-row gap-5">
-                <FavouriteBar />
-            </div>
+            {!isLoginPage && (
+                <div className="flex flex-row gap-5">
+                    <FavouriteBar />
+                </div>
+            )}
 
             <main className="flex-grow justify-center align-center p-4 w-full max-w-6xl">
                 <Outlet />
