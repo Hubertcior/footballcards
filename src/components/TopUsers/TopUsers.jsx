@@ -3,6 +3,7 @@ import {useTopUsers} from "@/hooks/useTopUsers.js";
 import Spinner from "@/components/UI/Spinner.jsx";
 import Heading from "@/components/UI/Heading.jsx";
 import RequireAuth from "@/components/Login/RequireAuth.jsx";
+import {Link} from "react-router-dom";
 
 const TopUsers = () => {
 
@@ -17,8 +18,9 @@ const TopUsers = () => {
             <Heading text="Top users"></Heading>
             <ul className="bg-white/80 rounded-xl shadow-lg px-8 py-6 mt-6 flex flex-col items-center w-full max-w-md mx-auto">
                 {topUsers.map((user, index) => (
-                    <li
+                    <Link
                         key={user.email}
+                        to={`/user/${user.email}`}
                         className="mb-3 last:mb-0 w-full flex items-center justify-between px-4 py-2 rounded-lg bg-green-100/70 hover:bg-green-200 transition"
                     >
                         <span className="font-semibold text-green-900 flex items-center gap-2">
@@ -33,7 +35,7 @@ const TopUsers = () => {
                         <span className="font-bold text-yellow-600 flex items-center gap-1">
                             {user.amount} <span role="img" aria-label="coins">🪙</span>
                         </span>
-                    </li>
+                    </Link>
                 ))}
             </ul>
         </RequireAuth>
