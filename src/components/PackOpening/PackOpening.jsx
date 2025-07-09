@@ -12,8 +12,6 @@ const PackOpening = ({ onOpenAgain }) => {
     const [loadingData, setLoadingData] = useState(false);
     const [errorData, setErrorData] = useState(null);
 
-
-
     useEffect(() => {
         if (!player?.name) return;
         setPlayerData(null);

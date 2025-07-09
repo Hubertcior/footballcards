@@ -12,7 +12,7 @@ const Layout = () => {
     const blockBackButton = location.pathname === '/leagues' || location.pathname === '/';
 
     return (
-        <div className="w-full min-h-screen flex flex-col justify-center items-center p-10"
+        <div className="w-full min-h-screen flex flex-col justify-center items-center "
              style={{
                  background: 'radial-gradient(circle at center, green 0%, black 100%)'
              }}>
