@@ -11,6 +11,7 @@ import {useCurrencyStore} from "@/Stores/currencyStore.js";
 import {useEffect} from "react";
 import {supabase} from "@/lib/supabase.js";
 import UserProfile from "@/components/UserProfile/UserProfile.jsx";
+import Game from "@/components/JugglingGame/Game.jsx";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                     <Route path="login" element={<Login/>} />
                     <Route path="top-users" element={<TopUsers/>} />
                     <Route path="user/:username" element={<UserProfile/>} />
+                    <Route path="/game" element={<Game/>} />
                 </Route>
             </Routes>
         </BrowserRouter>

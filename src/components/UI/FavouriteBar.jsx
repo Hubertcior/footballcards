@@ -14,6 +14,7 @@ const FavouriteBar = () => {
 
     return (
         <>
+            <PanelButton text="⚽ Juggling Game ⚽" url={'/game'}/>
             <PanelButton text="🔝 Best Users 🔝" url={'/top-users'} />
             <PanelButton text="⭐ Open Pack's ⭐" url={'/pack-opening'} />
             <PanelButton text="⭐ Favourite Panel ⭐" functionHandler={() => setModalOpen(true)} />
