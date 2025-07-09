@@ -17,20 +17,20 @@ const Layout = () => {
                  background: 'radial-gradient(circle at center, green 0%, black 100%)'
              }}>
             <CoinsBar />
-            <header className=" text-white text-center flex space-around gap-10">
+            <header className=" text-white text-center flex space-around gap-10 mt-4">
                <BackButton disable={blockBackButton}/>
-                <h1 className="text-4xl font-bold ">⚽ Football Explorer ⚽</h1>
+                <h1 className="text-4xl font-bold hidden md:block">⚽ Football Explorer ⚽</h1>
                 <AuthButtons/>
             </header>
+
+            <div className="flex flex-row gap-5">
+                <FavouriteBar />
+            </div>
 
             <main className="flex-grow justify-center align-center p-4 w-full max-w-6xl">
                 <Outlet />
             </main>
 
-
-            <div className="fixed bottom-8 right-8 z-50">
-                <FavouriteBar />
-            </div>
         </div>
     );
 };

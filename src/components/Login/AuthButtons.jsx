@@ -20,7 +20,7 @@ const AuthButtons = () => {
             {session ? (
                 <button
                     onClick={handleLogout}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition cursor-pointer"
+                    className="bg-red-500 text-white px-3 py-2 rounded-3xl shadow-md text-sm md:px-6 md:py-3 md:text-base hover:bg-red-600 transition cursor-pointer flex items-center justify-center"
                 >
                     Logout
                 </button>
@@ -28,7 +28,7 @@ const AuthButtons = () => {
                 <>
                     <a
                         href="/login"
-                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition cursor-pointer"
+                        className="bg-green-600 text-white px-3 py-2 rounded-3xl shadow-md text-sm md:px-6 md:py-3 md:text-base hover:bg-green-700 transition cursor-pointer flex items-center justify-center"
                     >
                         Log in / Register
                     </a>
