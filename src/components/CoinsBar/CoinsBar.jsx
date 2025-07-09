@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase.js'
 import Currency from "@/components/CoinsBar/Currency.jsx";
+import {Link} from "react-router-dom";
 
 const CoinsBar = () => {
     const [email, setEmail] = useState('')
@@ -26,7 +27,7 @@ const CoinsBar = () => {
         <div className="w-screen bg-green-900/20 text-white fixed top-0 left-0 z-[1000] shadow-md flex items-center justify-center">
             {email ? (
                 <div className="flex flex-row items-center justify-center gap-20">
-                    <span>User : <b>{email}</b></span>
+                    <Link to={`/user/${email}`}>User : <b>{email}</b></Link>
                     <Currency/>
                 </div>
             ): (

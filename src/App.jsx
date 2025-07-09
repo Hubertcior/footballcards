@@ -10,6 +10,7 @@ import TopUsers from "@/components/TopUsers/TopUsers.jsx";
 import {useCurrencyStore} from "@/Stores/currencyStore.js";
 import {useEffect} from "react";
 import {supabase} from "@/lib/supabase.js";
+import UserProfile from "@/components/UserProfile/UserProfile.jsx";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                     <Route path="pack-opening" element={<PackAnimation/>} />
                     <Route path="login" element={<Login/>} />
                     <Route path="top-users" element={<TopUsers/>} />
+                    <Route path="user/:username" element={<UserProfile/>} />
                 </Route>
             </Routes>
         </BrowserRouter>
