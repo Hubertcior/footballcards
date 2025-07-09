@@ -12,12 +12,31 @@ const FavouriteBar = () => {
 
     const [modalOpen, setModalOpen] = useState(false);
 
+    const ResponsiveText = ({ desktop, mobile }) => (
+        <>
+            <span className="hidden sm:inline">{desktop}</span>
+            <span className="inline sm:hidden">{mobile}</span>
+        </>
+    );
+
     return (
         <>
-            <PanelButton text="⚽ Juggling Game ⚽" url={'/game'}/>
-            <PanelButton text="🔝 Best Users 🔝" url={'/top-users'} />
-            <PanelButton text="⭐ Open Pack's ⭐" url={'/pack-opening'} />
-            <PanelButton text="⭐ Favourite Panel ⭐" functionHandler={() => setModalOpen(true)} />
+            <PanelButton
+                text={<ResponsiveText desktop="⚽ Juggling Game ⚽" mobile="⚽" />}
+                url={'/game'}
+            />
+            <PanelButton
+                text={<ResponsiveText desktop="🔝 Best Users 🔝" mobile="🔝" />}
+                url={'/top-users'}
+            />
+            <PanelButton
+                text={<ResponsiveText desktop="🎁 Open Pack's 🎁" mobile="🎁" />}
+                url={'/pack-opening'}
+            />
+            <PanelButton
+                text={<ResponsiveText desktop="⭐ Favourite Panel ⭐" mobile="⭐" />}
+                functionHandler={() => setModalOpen(true)}
+            />
     <AnimatePresence>
         {modalOpen && (
             <>

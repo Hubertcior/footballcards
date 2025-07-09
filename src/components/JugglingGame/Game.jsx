@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {useCurrencyStore} from "@/Stores/currencyStore.js";
+import RequireAuth from "@/components/Login/RequireAuth.jsx";
 
 const GAME_DURATION = 10;
 
@@ -65,6 +66,7 @@ const Game = () => {
     }, [isActive, timeLeft, score, addToAmount]);
 
     return (
+        <RequireAuth info>
         <div className="flex items-center justify-center h-[600px]">
             <div className="bg-white/90 rounded-3xl shadow-2xl p-8 w-full max-w-md flex flex-col items-center">
                 <h1 className="text-3xl font-extrabold text-green-700 mb-6 tracking-wide drop-shadow">Juggling Clicker</h1>
@@ -112,6 +114,7 @@ const Game = () => {
                 )}
             </div>
         </div>
+        </RequireAuth>
     );
 }
 export default Game
