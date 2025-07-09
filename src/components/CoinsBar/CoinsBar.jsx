@@ -27,7 +27,12 @@ const CoinsBar = () => {
         <div className="w-screen bg-green-900/20 text-white top-0 left-0 z-[1000] shadow-md flex items-center justify-center">
             {email ? (
                 <div className="flex flex-row items-center justify-center gap-20">
-                    <Link to={`/user/${email}`}>User : <b>{email}</b></Link>
+                    <Link
+                        to={`/user/${email}`}
+                        className="text-xs sm:text-base"
+                    >
+                        User : <b>{email}</b>
+                    </Link>
                     <Currency/>
                 </div>
             ): (

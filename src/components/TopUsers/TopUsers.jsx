@@ -30,7 +30,7 @@ const TopUsers = () => {
                             {index > 2 && index < 10 && (
                                 <span className="text-lg font-bold text-green-700">{index + 1}.</span>
                             )}
-                            {user.email}
+                            <span className="text-xs sm:text-base">{user.email}</span>
                         </span>
                         <span className="font-bold text-yellow-600 flex items-center gap-1">
                             {user.amount} <span role="img" aria-label="coins">🪙</span>
